@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: cloud-stream-kafka
+
+  cloud:
+    stream:
+      bindings:
+        # binding name for StreamBridge producer
+        publish-out-0:
+          destination: payments
+        # consumer function binding
+        payments-in-0:
+          destination: payments
+          group: billing-group
+
+      kafka:
+        binder:
+          brokers: localhost:9092
+logging:
+  level:
+    root: info
